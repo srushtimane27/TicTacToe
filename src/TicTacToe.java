@@ -26,7 +26,7 @@ public class TicTacToe {
 
         //keep track on whose turn it is
         boolean isPlayer1 = true;
-        //keeep track if the game has ended
+        //keep track if the game has ended
         boolean gameEnded = false;
 
         while(!gameEnded){
