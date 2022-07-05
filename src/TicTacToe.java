@@ -29,80 +29,80 @@ public class TicTacToe {
         //keeep track if the game has ended
         boolean gameEnded = false;
 
-        while(!gameEnded){
+        while (!gameEnded) {
 
-        //Draw board
-        drawBoard(board);
-
-
-        //keep track of what symbol we are using to play
-        char symbol = ' ';
-        if (isPlayer1) {
-            symbol = 'x';
-        } else {
-            symbol = 'o';
-        }
-        //print out the players turn
-        if (isPlayer1) {
-            System.out.println(p1 + "Turn (x):");
-        } else {
-            System.out.println(p2 + "Turn (o):");
-
-        }
+            //Draw board
+            drawBoard(board);
 
 
-        //Row and col variable
-        int row = 0;
-        int col = 0;
-
-        while (true) {
-
-            //get row and column from user
-            System.out.print("Enter a row (0, 1, or 2):");
-            row = in.nextInt();
-            System.out.println("Enter a col (0, 1, or 2):");
-            col = in.nextInt();
-
-            //check if row and col are valid
-            if (row < 0 || col < 0 || row > 2 || col > 2) {
-                //row and col are out of bounds
-                System.out.println("Row and columns are out of bound");
-            } else if (board[row][col] != '-') {
-                //board position has an x or o
-                System.out.println("Someone has already made a move");
+            //keep track of what symbol we are using to play
+            char symbol = ' ';
+            if (isPlayer1) {
+                symbol = 'x';
             } else {
-                //row and col are valid
-                break;
+                symbol = 'o';
             }
-        }
+            //print out the players turn
+            if (isPlayer1) {
+                System.out.println(p1 + "Turn (x):");
+            } else {
+                System.out.println(p2 + "Turn (o):");
 
-        //Setting the position on the board to the players symbol
-        board[row][col] = symbol;
-        //drawBoard(board);
+            }
 
-        //Check if a player has won
-        if (hasWon(board) == 'x') {
-            //player 1 has won
-            System.out.println(p1 + " has won");
-            gameEnded = true;
-        } else if (hasWon(board) == 'o') {
-            //player 2 has won
-            System.out.println(p2 + " has won");
-            gameEnded = true;
-        } else {
-            //nobody has won
-            if (hasTied(board)) {
-                //Tied
-                System.out.println("Its a tie");
+
+            //Row and col variable
+            int row = 0;
+            int col = 0;
+
+            while (true) {
+
+                //get row and column from user
+                System.out.print("Enter a row (0, 1, or 2):");
+                row = in.nextInt();
+                System.out.println("Enter a col (0, 1, or 2):");
+                col = in.nextInt();
+
+                //check if row and col are valid
+                if (row < 0 || col < 0 || row > 2 || col > 2) {
+                    //row and col are out of bounds
+                    System.out.println("Row and columns are out of bound");
+                } else if (board[row][col] != '-') {
+                    //board position has an x or o
+                    System.out.println("Someone has already made a move");
+                } else {
+                    //row and col are valid
+                    break;
+                }
+            }
+
+            //Setting the position on the board to the players symbol
+            board[row][col] = symbol;
+            //drawBoard(board);
+
+            //Check if a player has won
+            if (hasWon(board) == 'x') {
+                //player 1 has won
+                System.out.println(p1 + " has won");
+                gameEnded = true;
+            } else if (hasWon(board) == 'o') {
+                //player 2 has won
+                System.out.println(p2 + " has won");
                 gameEnded = true;
             } else {
-                //Continue the game and toggles the turn
-                isPlayer1 = !isPlayer1;
+                //nobody has won
+                if (hasTied(board)) {
+                    //Tied
+                    System.out.println("Its a tie");
+                    gameEnded = true;
+                } else {
+                    //Continue the game and toggles the turn
+                    isPlayer1 = !isPlayer1;
 
+                }
             }
-        }
 
-    }
+        }
     }
 
     //printing out the board
@@ -133,10 +133,10 @@ public class TicTacToe {
         }
 
         //Diagonals
-        if(board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != '-'){
+        if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != '-') {
             return board[0][0];
         }
-        if(board[2][0] == board[1][1] && board[1][1] == board[0][2] && board[2][0] != '-'){
+        if (board[2][0] == board[1][1] && board[1][1] == board[0][2] && board[2][0] != '-') {
             return board[2][0];
         }
 
@@ -147,10 +147,10 @@ public class TicTacToe {
     }
 
     //check if the board is full
-    public static boolean hasTied(char[][] board){
-        for(int i=0; i<3; i++){
-            for(int j=0; j<3; j++){
-                if(board[i][j] == '-'){
+    public static boolean hasTied(char[][] board) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == '-') {
                     return false;
                 }
             }
